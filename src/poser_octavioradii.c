@@ -647,36 +647,9 @@ int PoserOctavioRadii( SurviveObject * so, PoserData * pd )
 		//FLT  synctimes[SENSORS_PER_OBJECT][NUM_LIGHTHOUSES];
 
 		//to->numSensors = so->sensor_ct;
+		for (int lh = 0; lh < NUM_LIGHTHOUSES; lh++)
 		{
 			int sensorCount = 0;
-
-			for (int i = 0; i < so->sensor_ct; i++)
-			{
-				if (fs->lengths[i][0][0] != -1 && fs->lengths[i][0][1] != -1) //lh 0
-				{
-					to->sensor[sensorCount].normal.x = so->sensor_normals[i * 3 + 0];
-					to->sensor[sensorCount].normal.y = so->sensor_normals[i * 3 + 1];
-					to->sensor[sensorCount].normal.z = so->sensor_normals[i * 3 + 2];
-					to->sensor[sensorCount].point.x = so->sensor_locations[i * 3 + 0];
-					to->sensor[sensorCount].point.y = so->sensor_locations[i * 3 + 1];
-					to->sensor[sensorCount].point.z = so->sensor_locations[i * 3 + 2];
-					to->sensor[sensorCount].theta = fs->angles[i][0][0] + LINMATHPI / 2; // lighthouse 0, angle 0 (horizontal)
-					to->sensor[sensorCount].phi = fs->angles[i][0][1] + LINMATHPI / 2; // lighthosue 0, angle 1 (vertical)
-					to->sensor[sensorCount].id=i;
-					sensorCount++;
-				}
-			}
-
-			to->numSensors = sensorCount;
-
-			Point position;
-			FLT orientation[4];
-
-			SolveForLighthouseRadii(&position, orientation, to);
-		}
-		{
-			int sensorCount = 0;
-			int lh = 1;
 
 			for (int i = 0; i < so->sensor_ct; i++)
 			{
