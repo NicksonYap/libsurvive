@@ -574,13 +574,13 @@ int PoserOctavioRadii( SurviveObject * so, PoserData * pd )
 		if ((dd->lastAxis[l->lh] != (l->acode & 0x1)) )
 		{
 			int lastAxis = dd->lastAxis[l->lh];
-	//printf("\n");
+			//printf("\n");
 			//if (0 == l->lh)
 			//	printf("or[%d,%d] ", l->lh,lastAxis);
 
 			for (int i=0; i < SENSORS_PER_OBJECT; i++)
 			{
-	//FLT oldAngles[SENSORS_PER_OBJECT][2][NUM_LIGHTHOUSES][OLD_ANGLES_BUFF_LEN]; // sensor, sweep axis, lighthouse, instance
+				//FLT oldAngles[SENSORS_PER_OBJECT][2][NUM_LIGHTHOUSES][OLD_ANGLES_BUFF_LEN]; // sensor, sweep axis, lighthouse, instance
 				int index = dd->angleIndex[l->lh][axis];
 				if (dd->oldAngles[i][axis][l->lh][dd->angleIndex[l->lh][axis]] != 0)
 				{
@@ -631,9 +631,10 @@ int PoserOctavioRadii( SurviveObject * so, PoserData * pd )
 		//if (0 == l->lh)
 		//	printf("(%d) ", l->sensor_id);
 
-	//FLT oldAngles[SENSORS_PER_OBJECT][2][NUM_LIGHTHOUSES][OLD_ANGLES_BUFF_LEN]; // sensor, sweep axis, lighthouse, instance
+		//FLT oldAngles[SENSORS_PER_OBJECT][2][NUM_LIGHTHOUSES][OLD_ANGLES_BUFF_LEN]; // sensor, sweep axis, lighthouse, instance
 		dd->oldAngles[l->sensor_id][axis][l->lh][dd->angleIndex[l->lh][axis]] = l->angle;
-		break;	}
+		break;	
+	}
 	case POSERDATA_FULL_SCENE:
 	{
 		TrackedObject *to;
